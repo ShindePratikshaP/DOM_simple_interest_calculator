@@ -1,31 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Iterest Calculator</title>
+    <title>Simple Interest Calculator</title>
+    <style>
+        body {
+            background-color: #020334;
+            background-image: linear-gradient(45deg, #020334 0%, #095f78 52%, #0fad99 90%);
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            width: 500px;
+            display: block;
+            margin: 20px auto;
+            padding: 15px 30px;
+            border-radius: 5px;
+            box-shadow: 0px 5px 10px 5px rgb(30, 7, 46);
+        }
+
+        .app-title {
+            text-align: center;
+            background-color: #020334;
+            background-image: linear-gradient(45deg, #020334 0%, #095f78 52%, #0fad99 90%);
+            color: white;
+            font-weight: bolder;
+            padding: 5px 5px;
+        }
+
+        .text-bold {
+            font-weight: bold;
+            font-size: 19px;
+        }
+
+        .input-div {
+            display: flex;
+            flex-direction: column;
+            width: 85%;
+            margin: 5px auto;
+
+        }
+
+        .result-div {
+            background-color: rgb(205, 243, 243);
+            padding: 0px 5px;
+            margin: 10px auto;
+        }
+
+        .margin {
+            margin: 5px;
+        }
+
+        .height {
+            height: 30px;
+            font-size: 15px;
+        }
+
+        .para {
+            margin: 9px auto;
+            font-size: 18px;
+        }
+
+        .btn {
+            background-color: #020334;
+            background-image: linear-gradient(45deg, #020334 0%, #095f78 52%, #0fad99 90%);
+            color: white;
+            padding: 5px;
+            margin: 10px 7px;
+            width: 30%;
+            font-weight: bold;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            box-shadow: 0px 3px 10px 0px #013241;
+        }
+
+        .btn-div {
+            text-align: center;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Simple Interest Calculator</h1>
-    <div>
-        <label for="amount">Principal Amount</label>
-        <input type="number" placeholder="Enter Pricipal Amount" id="amount" />
+    <div class="container">
+        <h1 class="app-title">Simple Interest Calculator</h1>
+        <div class="input-div text-bold">
+            <label for="amount" class="margin">Principal Amount</label>
+            <input type="number" placeholder="Enter Pricipal Amount" id="amount" class="margin height" />
 
-        <label for="rate">Rate of Interest (%)</label>
-        <input type="number" placeholder="Enter rate " id="rate" />
+            <label for="rate" class="margin">Rate of Interest (%)</label>
+            <input type="number" placeholder="Enter rate " id="rate" class="margin height" />
 
-        <label for="time">Time Period (yrs)</label>
-        <input type="number" placeholder="Enter Number of Years" id="time" />
-
-        <div>
-        <p>Principal Amount : </p>
-        <p>Simple Interest : </p>
-        <p>Total Amount : </p>
+            <label for="time" class="margin">Time Period (yrs)</label>
+            <input type="number" placeholder="Enter Number of Years" id="time" class="margin height" />
         </div>
 
-        <button type="button">Calculate</button>
+        <div class="result-div text-bold">
+            <p class="para" id="principal"></p>
+            <p class="para" id="interest"></p>
+            <p class="para" id="total"></p>
+        </div>
+        <div class="btn-div">
+            <button type="button" class="btn" onclick="calculate()">Calculate</button>
+            <button type="button" class="btn" onclick="reset()">Reset</button>
+        </div>
     </div>
 
-    
+    <script>
+        function calculate() {
+            const p = document.getElementById("amount");
+            const r = document.getElementById("rate");
+            const t = document.getElementById("time");
+
+            const s = (parseInt(p.value) * parseInt(r.value) * parseInt(t.value)) / 100;
+
+            const result1 = document.getElementById("principal");
+            result1.innerText = `Principal Amount : ${p.value}`;
+
+            const result2 = document.getElementById("interest");
+            result2.innerText = `Simple Interest : ${s}`;
+
+            const totalAmount = s + parseInt(p.value);
+
+            const result3 = document.getElementById("total");
+            result3.innerText = `Total Amount : ${totalAmount}`;
+        }
+
+        function reset()
+        {
+            const p = document.getElementById("amount");
+            const r = document.getElementById("rate");
+            const t = document.getElementById("time");
+
+            const result1 = document.getElementById("principal");
+            const result2 = document.getElementById("interest");
+            const result3 = document.getElementById("total");
+
+            p.value = "";
+            r.value = "";
+            t.value = "";
+
+            result1.innerText = "";
+            result2.innerText = "";
+            result3.innerText = "";
+
+        }
+
+    </script>
+
+
 </body>
+
 </html>
